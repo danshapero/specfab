@@ -15,8 +15,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          sudo apt-get install -y libnetcdff-dev ninja-build meson
-          python -m pip install "numpy<2" "setuptools<65"
+          sudo apt-get install -y libnetcdff-dev ninja-build
+          python -m pip install "numpy<2" "setuptools<65" "meson>=1.1.0"
       - name: Build package
         working-directory: ./src
         run: |
