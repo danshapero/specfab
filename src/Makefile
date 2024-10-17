@@ -88,8 +88,8 @@ specfabpy: $(SPECFAB).o
 	for pyver in $(PYVERS); do \
 		echo "*** Making specfabpy for python$$pyver"; \
 		rm -f specfabpy.pyf; \
-		python$$pyver -m numpy.f2py --no-lower -m specfabpy -h specfabpy.pyf specfabpy.f90 $(VERBOSE_F2PY); \
-		python$$pyver -m numpy.f2py -lm -llapack -lblas -I. $(OBJALL) -c specfabpy.pyf specfabpy.f90 --f90flags="-ffree-line-length-none -mcmodel=medium" $(VERBOSE_F2PY); \
+		python$$pyver -m numpy.f2py --no-lower -m specfabpy -h specfabpy.pyf specfabpy.f90 $(VERBOSE_F2PY) --backend meson; \
+		python$$pyver -m numpy.f2py -lm -llapack -lblas -I. $(OBJALL) -I$(PWD) -c specfabpy.pyf specfabpy.f90 --f90flags="-ffree-line-length-none -mcmodel=medium" $(VERBOSE_F2PY) --backend meson; \
 	done
 	@echo "\n*** Moving python *.so modules to src/$(PATHSPECFABPY)"
 	@mv -f specfabpy.cpython* $(PATHSPECFABPY)/
