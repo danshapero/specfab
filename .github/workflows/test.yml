@@ -7,5 +7,7 @@ jobs:
       - name: Check out git repository
         uses: actions/checkout@v4
       - name: Build package
+        working-directory: ./src
         run: |
-          cd src && make all
+          make all
+          make python
