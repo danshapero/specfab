@@ -1,5 +1,5 @@
 import firedrake
-import specfabpy.firedrake
+import specfabpy.firedrake.CPO
 
 nx, ny = 16, 16
 mesh = firedrake.UnitSquareMesh(nx, ny, diagonal="crossed")
